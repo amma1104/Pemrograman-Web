@@ -111,8 +111,8 @@
     </div>
 
     <script>
-        let displayValue = ''; // Nilai yang tampil di display
-        let operatorSet = false; // Cek apakah operator sudah ditekan
+        let displayValue = ''; 
+        let operatorSet = false; 
 
         function clearDisplay() {
             displayValue = '';
@@ -125,23 +125,21 @@
         }
 
         function addToDisplay(value) {
-            // Jika sudah ada operator, mulai nilai baru
             if (operatorSet && isNaN(value)) {
-                return;  // Mencegah input operator beruntun
+                return;  
             }
 
             displayValue += value;
             updateDisplay(displayValue);
-            operatorSet = isNaN(value);  // Set operator status jika yang ditambahkan adalah operator
+            operatorSet = isNaN(value);  
         }
 
         function calculate() {
             try {
-                // Menghitung hasil dari ekspresi yang ada pada display
-                let result = eval(displayValue.replace('%', ' % ')); // Menggunakan % sebagai modulus
-                updateDisplay(result);  // Langsung menampilkan hasil akhir saja
-                displayValue = result.toString();  // Set result sebagai display baru untuk kalkulasi berikutnya
-                operatorSet = false;  // Reset operator setelah kalkulasi
+                let result = eval(displayValue.replace('%', ' % ')); 
+                updateDisplay(result);
+                displayValue = result.toString();
+                operatorSet = false;
             } catch (error) {
                 alert("Error: Invalid expression");
                 clearDisplay();
