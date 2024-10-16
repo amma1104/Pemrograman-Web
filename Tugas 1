@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f5;
+            margin: 0;
+        }
+
+        .calculator {
+            width: 400px;
+            background-color: #252525;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .display {
+            background-color: #777777;
+            color: white;
+            font-size: 2.5rem;
+            text-align: right;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+            height: 50px;
+            overflow-x: auto;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .button {
+            background-color: #ff0077;
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .button.special {
+            background-color: #0077ff; 
+        }
+
+        .button.operator {
+            background-color: #00ffaa;
+        }
+
+        .button.equals {
+            grid-column: span 2;
+            background-color: #7700ff;
+        }
+
+        .button:hover {
+            background-color: #ff007777;
+        }
+
+        .button.special:hover {
+            background-color: #0077ff77; 
+        }
+
+        .button.operator:hover {
+            background-color: #00ffaa77;
+        }
+
+        .button.equals:hover {
+            background-color: #7700ff77;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div id="display" class="display">0</div>
+        <div class="buttons">
+            <button class="button special" onclick="clearDisplay()">C</button>
+            <button class="button special" onclick="addToDisplay('%')">Mod</button>
+            <button class="button special" onclick="addToDisplay('**')">^</button>
+            <button class="button operator" onclick="addToDisplay('/')">÷</button>
+
+            <button class="button" onclick="addToDisplay('7')">7</button>
+            <button class="button" onclick="addToDisplay('8')">8</button>
+            <button class="button" onclick="addToDisplay('9')">9</button>
+            <button class="button operator" onclick="addToDisplay('*')">×</button>
+
+            <button class="button" onclick="addToDisplay('4')">4</button>
+            <button class="button" onclick="addToDisplay('5')">5</button>
+            <button class="button" onclick="addToDisplay('6')">6</button>
+            <button class="button operator" onclick="addToDisplay('-')">−</button>
+
+            <button class="button" onclick="addToDisplay('1')">1</button>
+            <button class="button" onclick="addToDisplay('2')">2</button>
+            <button class="button" onclick="addToDisplay('3')">3</button>
+            <button class="button operator" onclick="addToDisplay('+')">+</button>
+
+            <button class="button" onclick="addToDisplay('0')">0</button>
+            <button class="button" onclick="addToDisplay('.')">.</button>
+            <button class="button equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let displayValue = ''; // Nilai yang tampil di display
+        let operatorSet = false; // Cek apakah operator sudah ditekan
+
+        function clearDisplay() {
+            displayValue = '';
+            updateDisplay('0');
+            operatorSet = false;
+        }
+
+        function updateDisplay(value) {
+            document.getElementById('display').innerText = value;
+        }
+
+        function addToDisplay(value) {
+            // Jika sudah ada operator, mulai nilai baru
+            if (operatorSet && isNaN(value)) {
+                return;  // Mencegah input operator beruntun
+            }
+
+            displayValue += value;
+            updateDisplay(displayValue);
+            operatorSet = isNaN(value);  // Set operator status jika yang ditambahkan adalah operator
+        }
+
+        function calculate() {
+            try {
+                // Menghitung hasil dari ekspresi yang ada pada display
+                let result = eval(displayValue.replace('%', ' % ')); // Menggunakan % sebagai modulus
+                updateDisplay(result);  // Langsung menampilkan hasil akhir saja
+                displayValue = result.toString();  // Set result sebagai display baru untuk kalkulasi berikutnya
+                operatorSet = false;  // Reset operator setelah kalkulasi
+            } catch (error) {
+                alert("Error: Invalid expression");
+                clearDisplay();
+            }
+        }
+    </script>
+</body>
+</html>
