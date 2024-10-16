@@ -37,7 +37,7 @@
         input[type="text"] {
             flex-grow: 1;
             padding: 10px;
-            margin-right: 5px; /* Space between input and button */
+            margin-right: 5px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -66,32 +66,32 @@
             border-radius: 5px;
             margin-bottom: 20px;
             display: flex;
-            justify-content: space-between; /* Space between text and buttons */
-            align-items: flex-start; /* Align items at the start */
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         .todo-text {
-            flex-grow: 1; /* Allow text to take available space */
-            margin-left: 10px; /* Space between buttons and text */
-            word-wrap: break-word; /* Allow text to wrap */
-            overflow-wrap: break-word; /* Break long words to prevent overflow */
-            max-width: 200px; /* Limit text width */
+            flex-grow: 1;
+            margin-left: 10px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 200px;
         }
 
         .todo-buttons {
-            display: flex; /* Keep buttons in a column */
-            flex-direction: column; /* Stack buttons vertically */
-            margin-left: 10px; /* Space between buttons and text */
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
         }
 
         .todo-item button {
             background-color: #0077ff;
             border: none;
-            border-radius: 5px; /* Changed to rectangular */
+            border-radius: 5px;
             color: white;
-            padding: 5px 10px; /* Added padding for better appearance */
+            padding: 5px 10px;
             cursor: pointer;
-            margin-bottom: 5px; /* Space between buttons */
+            margin-bottom: 5px;
         }
 
         .todo-item button:hover {
@@ -102,9 +102,9 @@
             background-color: #0077ff;
             border: none;
             color: white;
-            padding: 5px 10px; /* Added padding for better appearance */
+            padding: 5px 10px;
             cursor: pointer;
-            border-radius: 5px; /* Changed to rectangular */
+            border-radius: 5px;
         }
 
         .edit-btn:hover {
@@ -112,12 +112,12 @@
         }
 
         .todo-edit-input {
-            width: calc(100% - 40px); /* Ensure full width for editing minus button space */
+            width: calc(100% - 40px);
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 5px;
-            display: none; /* Initially hidden */
-            margin-top: 5px; /* Space between input and text */
+            display: none;
+            margin-top: 5px;
         }
     </style>
 </head>
